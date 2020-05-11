@@ -36,7 +36,7 @@ for (let i = 0; i < 100; i += 1) {
     dateSold,
     openStart,
     openEnd,
-    images: Array(faker.random.number({ min: 1, max: 100, precision: 1 })).fill('houses'),
+    images: Array(faker.random.number({ min: 1, max: 100, precision: 1 })).fill('houses').map((x, idx) => `x${idx}`),
   });
 }
 

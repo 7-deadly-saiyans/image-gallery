@@ -5,9 +5,15 @@ const db = require('./db/index.js');
 const app = express();
 const PORT = 3000;
 
-app.use(express.static('public'));
+app.use('/homes', express.static('public'));
 
 app.get('/homes/:id', (req, res) => {
+  res.sendFile('index.html', { root: `${__dirname}/public` }, (err) => {
+    if (err) res.sendStatus(404);
+  });
+});
+
+app.get('/homes/:id/images', (req, res) => {
   const { id } = req.params;
   db.homes.get(id, (err, home) => {
     if (err) {
