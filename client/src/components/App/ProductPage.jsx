@@ -16,6 +16,7 @@ const ProductPage = styled.div`
 export default ({ home }) => {
   const location = useLocation();
   const { url } = useRouteMatch();
+  const resolvedPath = (url === '/') ? '' : url;
   const background = location.state && location.state.background;
 
   return (
@@ -23,7 +24,7 @@ export default ({ home }) => {
       <ImageContainer>
         <MainImage home={home}/>
       </ImageContainer>
-      {background && <Route path={`${url}/:id`} children={<MediaPopup home={home} />} />}
+      {background && <Route path={`${resolvedPath}/:id`} children={<MediaPopup home={home} />} />}
     </ProductPage>
   )
 };

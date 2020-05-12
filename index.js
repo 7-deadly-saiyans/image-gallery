@@ -3,9 +3,9 @@ const express = require('express');
 const db = require('./db/index.js');
 
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
-app.use('/homes', express.static('public'));
+app.use(express.static('public'));
 
 app.get('/homes/:id', (req, res) => {
   res.sendFile('index.html', { root: `${__dirname}/public` }, (err) => {

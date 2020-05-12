@@ -43,7 +43,8 @@ const Body = styled.div`
 export default ({ home }) => {
   const { imageURLs, tagsProcessed } = home;
   const location = useLocation();
-  const { url } = useRouteMatch();
+  const { url, path } = useRouteMatch();
+  const resolvedPath = (url === '/') ? '' : url;
 
   return (
     <Frame>
@@ -56,7 +57,7 @@ export default ({ home }) => {
           </ThemeProvider>
         </div>
       </TopDecorations>
-      <Link to={{ pathname: `${url}/photos`, state: { background: location } }}>
+      <Link to={{ pathname: `${resolvedPath}/photos`, state: { background: location } }}>
         <Body>
           <Image imageURL={imageURLs[0]} />
         </Body>

@@ -4,12 +4,13 @@ import ProductPage from './ProductPage';
 
 const initial = { imageURLs: [], tagsProcessed: [] };
 
-export default () => {
+export default ({ id = 1 }) => {
+  const server = 'http://localhost:3001/homes';
   const [home, setHome] = useState(initial);
+  const pathname = window.location.pathname;
 
   useEffect(() => {
-    const pathname = window.location.pathname;
-    fetch(`${pathname}/images`)
+    fetch(`${server}/${id}/images`)
     .then(response => response.json())
     .then(home => setHome(home))
     .catch(err => console.error(err));
@@ -17,7 +18,7 @@ export default () => {
 
   return (
     <Router>
-      <Route path='/homes/:id' children={<ProductPage home={home} />} />
+      <Route path={pathname} children={<ProductPage home={home} />} />
     </Router>
   );
 };
