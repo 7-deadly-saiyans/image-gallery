@@ -18,13 +18,11 @@ export default React.forwardRef(({ children, onClick, selected }, ref) => {
           return React.cloneElement(child, {
             id: idx,
             style: Object.assign({}, child.props.style, { flexShrink: 0 }),
+            selected: selected === idx,
             onClick: (event) => {
-              if (child.props.onClick) {
-                child.props.onClick(event)
-              };
+              if (child.props.onClick) child.props.onClick(event);
               onClick(event);
             },
-            selected: selected === idx,
           });
         })}
       </Container>

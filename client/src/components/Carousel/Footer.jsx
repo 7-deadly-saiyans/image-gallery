@@ -21,10 +21,14 @@ const Summary = styled.div`
   margin-right: ${({ offset }) => offset};
 `;
 
+const Pipe = () => (
+  <span style={{ margin: '0px 8px' }}>|</span>
+);
+
 export default ({ home, index, innerWidth }) => {
 
   const { address, price, rooms, imageURLs } = home;
-  const pipe = <span style={{ margin: '0px 8px' }}>|</span>
+  // const pipe = <span style={{ margin: '0px 8px' }}>|</span>
   const offset = (innerWidth < 898) ? '308px' : '';
 
   return (
@@ -34,8 +38,8 @@ export default ({ home, index, innerWidth }) => {
       </Count>
       <Summary offset={offset}>
         <span>{address}</span>
-        <span>{pipe}{price}</span>
-        <span>{pipe}{rooms}</span>
+        <span><Pipe />{price}</span>
+        <span><Pipe />{rooms}</span>
       </Summary>
     </Footer>
   )

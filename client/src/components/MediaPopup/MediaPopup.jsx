@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import styled from 'styled-components';
 
-import Modal from '../other/modal';
+import Modal from '../Modal';
 import Head from './Head';
 import Photos from '../Media/Photos';
 import Map from '../Media/Map';
@@ -19,6 +19,7 @@ const MediaContainer = styled.div`
   width: 100%;
   overflow: hidden;
   background-color: rgb(255, 255, 255);
+  font-family: arial;
   @media (min-width: 767px) {
     margin: 48px;
     height: calc(100% - 96px);
@@ -33,7 +34,7 @@ const Body = styled.div`
 
 export default ({ home }) => {
   const { path } = useRouteMatch();
-  const [innerWidth, setWidth] = useState(window.innerWidth);
+  const [innerWidth, setWidth] = useState(1000);
   const routes = [
     {
       title: 'Photos',
@@ -73,8 +74,10 @@ export default ({ home }) => {
   ];
 
   useEffect(() => {
-    window.addEventListener('resize', () => setWidth(window.innerWidth));
-  });
+    const resize = () => setWidth(window.innerWidth)
+    window.addEventListener('resize', resize);
+    return () => window.removeEventListener('resize', resize);
+  }, []);
 
   return (
     <Modal>

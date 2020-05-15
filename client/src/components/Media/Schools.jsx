@@ -53,7 +53,14 @@ export default ({ position }) => {
     <MediaSchool>
       <MapEmbed position={position} markers={markers} />
       <Sidebar className={collapsed ? 'collapsed' : ''}>
-        <SchoolForm schools={filteredSchools} collapsed={collapsed} onCollapse={() => setCollapsed(!collapsed)} typeFilter={typeFilter} setType={setType} levelFilter={levelFilter} setLevel={setLevel} />
+        <SchoolForm
+          schools={filteredSchools}
+          collapsed={collapsed}
+          onCollapse={() => setCollapsed(!collapsed)}
+          typeFilter={typeFilter}
+          setType={setType}
+          levelFilter={levelFilter}
+          setLevel={setLevel} />
       </Sidebar>
     </MediaSchool>
   );

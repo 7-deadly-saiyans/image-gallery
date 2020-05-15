@@ -30,9 +30,19 @@ export default ({ schools, collapsed, onCollapse, setType, typeFilter, setLevel,
   return (
     <SchoolForm>
       <Header onClick={onCollapse} collapsed={collapsed} />
-      <Filters types={types} levels={levels} typeFilter={typeFilter} setType={setType} levelFilter={levelFilter} setLevel={setLevel} />
+      <Filters
+        types={types}
+        levels={levels}
+        typeFilter={typeFilter}
+        setType={setType}
+        levelFilter={levelFilter}
+        setLevel={setLevel} />
       <Disclosure>{disclosure}</Disclosure>
-      {!collapsed && <List schools={schools} typeFilter={typeFilter} levelFilter={levelFilter} />}
+      {!collapsed &&
+        <List
+          schools={schools}
+          typeFilter={typeFilter}
+          levelFilter={levelFilter} />}
     </SchoolForm>
   );
 }

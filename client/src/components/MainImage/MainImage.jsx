@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import { Link, useLocation, useRouteMatch } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Tags from './Tags';
 import Image from './Image';
 import GalleryButton from './GalleryButton';
@@ -40,11 +40,9 @@ const Body = styled.div`
   overflow: hidden;
 `;
 
-export default ({ home }) => {
+export default ({ home, pathname }) => {
   const { imageURLs, tagsProcessed } = home;
   const location = useLocation();
-  const { url, path } = useRouteMatch();
-  const resolvedPath = (url === '/') ? '' : url;
 
   return (
     <Frame>
@@ -57,7 +55,7 @@ export default ({ home }) => {
           </ThemeProvider>
         </div>
       </TopDecorations>
-      <Link to={{ pathname: `${resolvedPath}/photos`, state: { background: location } }}>
+      <Link to={{ pathname: `${pathname}/photos`, state: { background: location } }}>
         <Body>
           <Image imageURL={imageURLs[0]} />
         </Body>

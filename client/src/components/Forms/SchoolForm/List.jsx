@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Dot, Divider } from '../../Other/Auxilliary';
-
 const SchoolList = styled.div`
   overflow-y: auto;
   padding: 0 8px;
@@ -71,6 +69,16 @@ const MaxScore = styled.span`
   color: rgb(255, 255, 255);
   line-height: 1.1
 `;
+
+const Dot = () => (
+  <span style={{ margin: '0 4px '}}>•</span>
+);
+
+const Divider = () => (
+  <div style={{ padding: '4px 0 8px 0', lineHeight: 0.1 }}>
+    <div style={{ width: '280px', height: '1px', backgroundColor: 'rgb(232, 233, 234)' }}></div>
+  </div>
+);
 
 const SchoolRating = ({ rating }) => (
   <Rating>

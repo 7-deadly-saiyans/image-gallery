@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { ScheduleButton, BasicButton } from '../../buttons.jsx';
 import Next7DaysSchedule from './Next7DaysSchedule.jsx';
-import CheckBox from './CheckBox.jsx';
+import Checkbox from './Checkbox.jsx';
 import ErrorMessage from './ErrorMessage.jsx';
 
 const Input = styled.input`
@@ -80,7 +80,7 @@ export default () => {
         <Input type='text' placeholder='Email' onBlur={onBlur(setEmailCheck)} />
         {noEmail && <ErrorMessage message={'Enter a valid email.'} />}
       </FormRow>
-      <CheckBox status={financeChecked} toggle={setFinance} />
+      <Checkbox status={financeChecked} toggle={setFinance} />
       <FormRow padding='4px 0 0 0' margin='0 0 8px 0'>
         <ScheduleButton width='100%' padding='8px 16px' />
       </FormRow>

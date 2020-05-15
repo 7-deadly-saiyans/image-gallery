@@ -28,7 +28,10 @@ export default ({ children, btnLeft, btnRight, top = '7px', right = '0px', initi
     const { childNodes, style, scrollWidth, clientWidth } = ref.current;
     const size = Array.from(childNodes).reduce((size, child) => size + child.offsetWidth, 0);
     // why is animation necessary, tested with setting css directly but did not work
-    const keyframe = [{ transform: `translateX(-${shift}%)` }, { transform: `translateX(0%)` }];
+    const keyframe = [
+      { transform: `translateX(-${shift}%)` },
+      { transform: `translateX(0%)` }
+    ];
     const duration = { duration: 0, fill: 'forwards' };
     const animation = ref.current.animate(keyframe, duration);
 
@@ -47,7 +50,10 @@ export default ({ children, btnLeft, btnRight, top = '7px', right = '0px', initi
     return function (event) {
       event.preventDefault();
       const next = Math.max(0, Math.min(shift + dir * 100, max));
-      const keyframe = [{ transform: `translateX(-${shift}%)` }, { transform: `translateX(-${next}%)` }];
+      const keyframe = [
+        { transform: `translateX(-${shift}%)` },
+        { transform: `translateX(-${next}%)` }
+      ];
       const duration = { duration: 250 * Math.abs(next - shift) / 100, fill: 'forwards' };
       const animation = ref.current.animate(keyframe, duration);
       animation.onfinish = () => setShift(next);

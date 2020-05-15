@@ -1,0 +1,10 @@
+version: '3.8'
+  services:
+    app:
+      build: './image-gallery'
+      depends_on:
+        - 'imagedb'
+      ports:
+        - '80:3001'
+    imagedb:
+      image: 'mongodb:latest'

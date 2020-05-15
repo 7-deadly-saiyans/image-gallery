@@ -1,3 +1,0 @@
-const fetch = require('node-fetch');
-
-console.log(fetch('https://google.com'))
