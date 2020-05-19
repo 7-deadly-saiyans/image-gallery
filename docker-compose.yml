@@ -1,10 +1,10 @@
-version: '3.8'
-  services:
-    app:
-      build: './image-gallery'
-      depends_on:
-        - 'imagedb'
-      ports:
-        - '80:3001'
-    imagedb:
-      image: 'mongodb:latest'
+version: "3.8"
+services:
+  app:
+    build: .
+    depends_on:
+      - db
+    ports:
+      - "80:3001"
+  db:
+    image: mongo:latest

@@ -1,9 +1,11 @@
 const express = require('express');
+const compression = require('compression');
 const db = require('./db');
 
 const app = express();
 const PORT = 3001;
 
+app.use(compression());
 app.use(express.static('public'));
 
 app.get('/homes/:id', (req, res) => {
@@ -21,6 +23,11 @@ app.get('/homes/:id/images', (req, res) => {
       res.json(home);
     }
   });
+});
+
+app.get('/homes/:id/*', (req, res) => {
+  const { id } = req.params;
+  res.redirect(`/homes/${id}`);
 });
 
 app.listen(PORT, (err) => {

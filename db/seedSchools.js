@@ -1,4 +1,5 @@
-import faker from 'faker';
+const faker = require('faker');
+const fs = require('fs');
 
 const levels = ['Elementary', 'Middle', 'High'];
 const types = ['Public', 'Private'];
@@ -31,5 +32,7 @@ for (let i = 0; i < 100; i += 1) {
   });
 }
 
-
-export default schools;
+fs.writeFile('./db/school_test.js', `export default ${JSON.stringify(schools)}`, (err) => {
+  if (err) throw err;
+  console.log('school test file created');
+})

@@ -1,4 +1,4 @@
-import { code } from '../../../config/config';
+import { code } from '../../config/config';
 
 const setupMapAPI = (cb = () => {}) => {
   // Create the script tag, set the appropriate attributes

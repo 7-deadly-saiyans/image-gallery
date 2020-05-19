@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const { formatOpenTime } = require('./helper.js');
 const { MONTHS, TAGS } = require('./constants.js');
-const root = 'https://loremflickr.com/320/240';
+
+const root = 'https://static.trulia-cdn.com/pictures/thumbs_6/zillowstatic/';
 
 mongoose.connect('mongodb://localhost/trulia', {
   useNewUrlParser: true,

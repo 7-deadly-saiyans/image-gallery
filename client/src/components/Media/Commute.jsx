@@ -1,10 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import styled from 'styled-components';
 import MapEmbed from './MapEmbed';
-import SchoolForm from '../Forms/SchoolForm';
-import schools from '../../../../db/school_test.js';
+import CommuteForm from '../Forms/CommuteForm';
 
-const MediaSchool = styled.div`
+const MediaCommute = styled.div`
   position: relative;
   height: 100%;
 `;
@@ -34,27 +33,11 @@ export default ({ position }) => {
   const [typeFilter, setType] = useState('Assigned');
   const [levelFilter, setLevel] = useState('All Grades');
 
-  const filter = () => (
-    schools.filter(school => {
-      const { level, type } = school;
-      if (type === typeFilter || typeFilter === 'All') {
-        if (level === levelFilter || levelFilter === 'All Grades') {
-          return true;
-        }
-      }
-      return false;
-    })
-  );
-
-  const filteredSchools = useMemo(filter, [typeFilter, levelFilter]);
-  const markers = filteredSchools.map(({ school, position, type }) => ({ position, icon : type === 'Assigned' ? assignedIcon : schoolIcon, school }));
-
   return (
-    <MediaSchool>
-      <MapEmbed position={position} markers={markers} />
+    <MediaCommute>
+      <MapEmbed position={position} />
       <Sidebar className={collapsed ? 'collapsed' : ''}>
-        <SchoolForm
-          schools={filteredSchools}
+        <CommuteForm
           collapsed={collapsed}
           onCollapse={() => setCollapsed(!collapsed)}
           typeFilter={typeFilter}
@@ -62,6 +45,6 @@ export default ({ position }) => {
           levelFilter={levelFilter}
           setLevel={setLevel} />
       </Sidebar>
-    </MediaSchool>
+    </MediaCommute>
   );
 };
